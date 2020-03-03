@@ -38,14 +38,14 @@ namespace ping_2020 {
 			Hosts.Add("考勤服务器", "172.16.32.2");
 			Hosts.Add("云服务器1", "172.16.32.9");
 			Hosts.Add("云服务器2", "172.16.32.10");
-			Hosts.Add("设计部服务器", "172.16.32.35");
-			Hosts.Add("新档案服务器", "172.16.32.18");
-			Hosts.Add("致远OA服务器", "172.16.33.140");
-			Hosts.Add("新OA数据服务器", "172.16.32.22");
-			Hosts.Add("总管理处共享", "172.16.33.67");
-			Hosts.Add("总体行销服务器", "172.16.33.43");
-			Hosts.Add("RedMine服务器", "172.16.32.33");
-			Hosts.Add("财务用友服务器", "172.16.33.59");
+			Hosts.Add("服务器", "172.16.32.35");
+			Hosts.Add("服务器", "172.16.32.18");
+			Hosts.Add("服务器", "172.16.33.140");
+			Hosts.Add("服务器", "172.16.32.22");
+			Hosts.Add("共享", "172.16.33.67");
+			Hosts.Add("服务器", "172.16.33.43");
+			Hosts.Add("服务器", "172.16.32.33");
+			Hosts.Add("服务器", "172.16.33.59");
 			hostCount = Hosts.Count;
 			groupBoxs = new GroupBox[hostCount];
 			TxtPings = new TextBox[hostCount];
@@ -53,7 +53,7 @@ namespace ping_2020 {
 			ProcessStatus = new Int32[hostCount];
 			//
 			AuthorityService.authorityService ws = new AuthorityService.authorityService();
-			AuthorityService.UserToken token = ws.authenticate("service-admin", "123456");
+			AuthorityService.UserToken token = ws.authenticate("service-admin", "111111");
 			Console.WriteLine(token.id);
 			token_id = token.id;
 
@@ -144,7 +144,7 @@ namespace ping_2020 {
 				if (errNum > 5) {
 					errNum = 0;
 					normalNum = 0;
-					SendOAMessage(name + url + "网络超时超过5次");
+					//SendOAMessage(name + url + "网络超时超过5次");
 					TxtPings[id].Invoke(ChangeTextInvoke, "超时超过5次", id, "red");
 				}
 				if (normalNum > 20 && errNum==0) {
